@@ -27,6 +27,7 @@ game.StarterGui:SetCore("SendNotification", {
 	Text = "Project Trez Loaded !!!";
 	Duration = 5; 
 })
+
 -- StarterGui.Trez
 G2L["1"] = Instance.new("ScreenGui", game.CoreGui);
 G2L["1"]["Name"] = [[Trez]];
@@ -166,6 +167,7 @@ G2L["10"] = Instance.new("LocalScript", G2L["f"]);
 
 -- StarterGui.Trez.MainBG.Executor.MainCodeFrame
 G2L["11"] = Instance.new("ScrollingFrame", G2L["e"]);
+G2L["11"]["Visible"] = false;
 G2L["11"]["Active"] = true;
 G2L["11"]["BorderSizePixel"] = 0;
 G2L["11"]["CanvasSize"] = UDim2.new(0, 0, 900, 0);
@@ -176,7 +178,6 @@ G2L["11"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["11"]["Position"] = UDim2.new(0.02604, 0, 0.14163, 0);
 G2L["11"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["11"]["BackgroundTransparency"] = 0.9;
-G2L["11"]["Visible"] = false
 
 
 -- StarterGui.Trez.MainBG.Executor.MainCodeFrame.TextBox
@@ -392,6 +393,19 @@ local script = G2L["7"];
 			Close(Frames)
 			wait(0.9)
 			Frames.Visible = false
+			game.StarterGui:SetCore("SendNotification", {
+				Title = "Settings";
+				Text = "Project Trez has been closed if you want to re open it please execute Copied Code on your executor";
+				Icon = "rbxassetid://224102590";
+				Duration = 5; 
+			})
+			SetClipoard("getgenv().Vpi = true")
+			if getgenv().Vpi == true then
+				Frames.Visible = true
+				Open(Frames)
+			else
+				return
+			end
 		end)
 	else
 		Error.Visible = true
@@ -458,7 +472,6 @@ local function C_15()
 local script = G2L["15"];
 	local codebox = script.Parent
 	local linecount = script.Parent.LineCount
-	---- wow
 	codebox:GetPropertyChangedSignal("Text"):Connect(function()
 		local line = codebox.Text:split('\n')
 		linecount.Text = ""
@@ -482,6 +495,7 @@ local script = G2L["19"];
 			loadstring(getgenv().Code.Text)()
 		end)
 	end)
+	
 end;
 task.spawn(C_19);
 -- StarterGui.Trez.MainBG.Loading.LocalScript
