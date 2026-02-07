@@ -458,7 +458,7 @@ local function C_15()
 local script = G2L["15"];
 	local codebox = script.Parent
 	local linecount = script.Parent.LineCount
-	
+	---- wow
 	codebox:GetPropertyChangedSignal("Text"):Connect(function()
 		local line = codebox.Text:split('\n')
 		linecount.Text = ""
