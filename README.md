@@ -458,15 +458,8 @@ local function C_15()
 local script = G2L["15"];
 	local codebox = script.Parent
 	local linecount = script.Parent.LineCount
-	local higlight = script.Parent.CodeHighlight
 	
 	codebox:GetPropertyChangedSignal("Text"):Connect(function()
-		higlight.Text = codebox.Text
-		if higlight.Visible == false then
-			higlight.Visible = true
-		else
-			higlight.Visible = false
-		end
 		local line = codebox.Text:split('\n')
 		linecount.Text = ""
 		for i = 1, #line do
